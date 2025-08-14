@@ -1,16 +1,23 @@
-package atividade2;
+package atv;
 
 public class Celular {
 
-    String cor;
     String modelo;
-    String preco;
-    String marca;
-    String fornecedor;
+    double preco;
+    double precoParcelado;
+
+    public String mostrarModelo(String modelo){
+        return "O modelo é " + modelo;
+    }
+
+    public double verPreco(double preco){
+        this.preco = preco;
+        return this.preco;
+    }
+
+    public double precoCartao(){
+        return preco / 12;
+    }
 
 
-    int 
-
-    
-    
 }
