@@ -1,4 +1,3 @@
-package atv;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +27,7 @@ public class TesteCelular {
         }
 
 
-
+        tec.close();
 
     }
 }
