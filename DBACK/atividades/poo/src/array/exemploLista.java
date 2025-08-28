@@ -2,7 +2,7 @@ package array;
 
 import java.util.ArrayList;
 
-public class exemploLista {
+public class ExemploLista {
 
     public static void main(String[] args) {
         
