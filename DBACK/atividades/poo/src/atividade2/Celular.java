@@ -1,4 +1,4 @@
-
+package atividade2;
 import java.util.Date;
 
 public class Celular {

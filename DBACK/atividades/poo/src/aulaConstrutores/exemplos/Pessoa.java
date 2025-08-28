@@ -1,4 +1,4 @@
-package exemplos;
+package aulaConstrutores.exemplos;
 public class Pessoa {
     
     int idade;
