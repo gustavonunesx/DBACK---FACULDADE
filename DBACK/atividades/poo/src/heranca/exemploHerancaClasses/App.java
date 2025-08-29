@@ -1,5 +1,4 @@
-package heranca;
-
+package heranca.exemploHerancaClasses;
 
 public class App {
 
