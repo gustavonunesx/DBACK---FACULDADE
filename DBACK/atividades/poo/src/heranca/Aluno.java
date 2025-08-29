@@ -5,15 +5,6 @@ public class Aluno extends Pessoa{
     private String identificacao;
     private int anoLetivo;
     private int nmrDiciplinas;
-
-    public Aluno(){}
-
-    public Aluno(String identificacao, int anoLetivo, int nmrDiciplinas) {
-        this.identificacao = identificacao;
-        this.anoLetivo = anoLetivo;
-        this.nmrDiciplinas = nmrDiciplinas;
-    }
-
     public String getIdentificacao() {
         return identificacao;
     }

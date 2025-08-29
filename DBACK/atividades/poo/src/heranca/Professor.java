@@ -6,15 +6,6 @@ public class Professor extends Pessoa{
     private int qtdTrumas;
     private String turmas;
 
-    public Professor() {
-    }
-
-    public Professor(int numeroDeAulas, int qtdTrumas, String turmas) {
-        this.numeroDeAulas = numeroDeAulas;
-        this.qtdTrumas = qtdTrumas;
-        this.turmas = turmas;
-    }
-
     public int getNumeroDeAulas() {
         return numeroDeAulas;
     }
