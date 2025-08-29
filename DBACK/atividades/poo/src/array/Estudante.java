@@ -23,9 +23,20 @@ public class Estudante {
         notas.add(nota);
     }
 
-    // public double calcularMedia(int qtdNotas){
-    //     ;
-    // }
+    public double calcularMedia(){
+
+        if (notas.isEmpty())    
+             return 0.0;
+             
+        double soma = 0.0;
+        for(double n : notas){
+            soma += n;
+        }
+        return soma / notas.size();
+    }
+
+    
+    
 
     
 
