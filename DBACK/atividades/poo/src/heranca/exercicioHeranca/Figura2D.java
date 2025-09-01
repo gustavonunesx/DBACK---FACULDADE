@@ -1,9 +1,11 @@
-package heranca.exercicioHeranca;
-
 public class Figura2D {
     
     private double base;
     private double altura;
+
+
+
+    
     
     public double getBase() {
         return base;
