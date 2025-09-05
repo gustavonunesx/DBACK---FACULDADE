@@ -1,3 +1,4 @@
+package aula01.poo.src.aulaConstrutores.ex1;
 public class Lampada {
     
     private boolean status;

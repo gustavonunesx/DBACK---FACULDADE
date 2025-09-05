@@ -1,3 +1,5 @@
+package heranca.exerciciosHeranca.exercicio3;
+
 public class Triangulo extends Figura2D{
     
     private String tipo;

@@ -1,3 +1,4 @@
+package aula01.poo.src.aulaConstrutores.ex2;
 public class Conta {
     
     private int numero;

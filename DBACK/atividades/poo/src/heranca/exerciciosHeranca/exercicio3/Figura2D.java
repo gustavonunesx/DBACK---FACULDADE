@@ -1,3 +1,5 @@
+package heranca.exerciciosHeranca.exercicio3;
+
 public class Figura2D {
     
     private double base;

@@ -1,4 +1,4 @@
-package exemplos;
+package aula01.poo.src.aulaConstrutores.exemplos;
 public class MainPessoa {
     public static void main(String[] args) {
         
