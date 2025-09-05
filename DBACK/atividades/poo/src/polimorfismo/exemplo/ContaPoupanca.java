@@ -1,4 +1,4 @@
-package polimorfismo;
+package polimorfismo.exemplo;
 
 public class ContaPoupanca extends Conta{
 
@@ -15,6 +15,16 @@ public class ContaPoupanca extends Conta{
     public void atualziarSaldo(){
         saldo += saldo * taxaDeJuros;
     }
+
+    @Override
+    public void sacar(double valor) {
+        if (saldo >= valor) {
+            saldo -= valor;    
+        }
+    }
+
+    
+    
 
     
 

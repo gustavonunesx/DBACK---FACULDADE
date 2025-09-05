@@ -1,4 +1,4 @@
-package polimorfismo;
+package polimorfismo.exemplo;
 
 public class Conta {
 
@@ -37,6 +37,14 @@ public class Conta {
             saldo += valor;
         }
     }
+
+    public void sacar(double valor){
+        if (saldo >= valor) {
+            saldo -= valor + 5;    
+        }
+        
+    }
+    
     
     
     

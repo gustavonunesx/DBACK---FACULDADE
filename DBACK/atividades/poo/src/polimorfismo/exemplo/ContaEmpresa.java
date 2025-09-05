@@ -1,4 +1,4 @@
-package polimorfismo;
+package polimorfismo.exemplo;
 
 public class ContaEmpresa extends Conta{
     
@@ -26,7 +26,11 @@ public class ContaEmpresa extends Conta{
         }
     }
 
+    @Override
+    public void sacar(double valor) {
+        super.sacar(valor - 2);
+
+    }
+
     
-
-
 }
