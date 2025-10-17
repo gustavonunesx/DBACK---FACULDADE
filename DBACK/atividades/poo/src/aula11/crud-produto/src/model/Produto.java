@@ -55,6 +55,13 @@ public class Produto {
         this.estoque = estoque;
     }
 
+    @Override
+    public String toString() {
+        return "Nome:" + nome +  "\nPreço" + preco + "\nestoque" + estoque;
+    }
+
+    
+
     
     
     
