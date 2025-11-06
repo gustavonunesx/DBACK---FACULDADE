@@ -1,13 +1,23 @@
 package model;
 
 public class Produto {
-
+    // Atributos
     private Long id;
     private String nome;
     private double preco;
     private int estoque;
 
+    // Construtores (vazio, sem o id, completo)
+
+    // para json
     public Produto() {
+    }
+    
+    //sem o id (para inserções auto increment)
+    public Produto(String nome, double preco, int estoque) {
+        this.nome = nome;
+        this.preco = preco;
+        this.estoque = estoque;
     }
 
     public Produto(Long id, String nome, double preco, int estoque) {
@@ -17,11 +27,7 @@ public class Produto {
         this.estoque = estoque;
     }
 
-    public Produto(String nome, double preco, int estoque) {
-        this.nome = nome;
-        this.preco = preco;
-        this.estoque = estoque;
-    }
+    //Getters and Setters 
 
     public Long getId() {
         return id;
@@ -55,19 +61,11 @@ public class Produto {
         this.estoque = estoque;
     }
 
+    // Methods 
+
     @Override
-    public String toString() {
-        return "Id" + id +
-        "Nome:" + nome +  
-        "\nPreço" + 
-        preco + 
-        "\nestoque" 
-        + estoque;
+    public String toString(){
+        return "Nome: " + nome + " | Preço: " + preco + " | Estoque: " + estoque;
     }
-
-    
-
-    
-    
     
 }

@@ -1,5 +1,6 @@
 import dao.ProdutoDAO;
-
+import model.Produto;
+import util.ConnectionFactory;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -33,7 +34,7 @@ public class App {
         
 
         // Inserir produto
-     //   Produto p1 = new Produto("Notebook", 2500.00, 2);
+        Produto p1 = new Produto("Notebook", 2500.00, 2);
         // produtoDAO.inserir(p1);
 
         //atualizar produto
