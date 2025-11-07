@@ -8,22 +8,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.xdevapi.Schema.CreateCollectionOptions;
-
-import model.Produto;
+import model.Categoria;
 import util.ConnectionFactory;
 
-public class ProdutoDAO {
+public class CategoriaDAO {
     
     // -----------------------------------------------------------
     // READ 
     // -----------------------------------------------------------
 
-    public List<Produto> buscarTodos(){
+    public List<Categoria> buscarTodos(){
 
-        List<Produto> produtos = new ArrayList<>();
+        List<Categoria> categorias = new ArrayList<>();
 
-        String sql = "SELECT * FROM produtos";
+        String sql = "SELECT * FROM categoria";
 
         try (
             Connection conn = ConnectionFactory.getConnection(); 
@@ -31,22 +29,20 @@ public class ProdutoDAO {
             ResultSet rs = stmt.executeQuery()       
         ) {
             while(rs.next()){
-                Produto produto = new Produto(
+                Categoria categoria = new Categoria(
                     rs.getLong("id"),
-                    rs.getString("nome"),
-                    rs.getDouble("preco"),
-                    rs.getInt("estoque")
+                    rs.getString("nome")
                 );
-                produtos.add(produto);
+                categorias.add(categoria);
 
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao buscar produtos: " + e.getMessage());
+            System.out.println("Erro ao buscar categorias: " + e.getMessage());
             e.printStackTrace();
         }
 
-        return produtos;
+        return categorias;
 
     }
 
@@ -54,11 +50,11 @@ public class ProdutoDAO {
     // READ BY id
     // -------------------------------------------
 
-    public Produto buscarPorId(Long id){
+    public Categoria buscarPorId(Long id){
         
-        Produto produto = null;
+        Categoria categoria = null;
         
-        String sql = "SELECT id, nome, preco, estoque FROM produtos WHERE id = ?";
+        String sql = "SELECT id, nome FROM categoria WHERE id = ?";
 
         try (
             Connection conn = ConnectionFactory.getConnection(); 
@@ -68,49 +64,45 @@ public class ProdutoDAO {
             
             try(ResultSet rs = stmt.executeQuery()){
                 if(rs.next()){
-                    produto = new Produto(
+                    categoria = new Categoria(
                         rs.getLong("id"),
-                        rs.getString("nome"),
-                        rs.getDouble("preco"),
-                        rs.getInt("estoque")
+                        rs.getString("nome")
                     );
                 }
             }
         } catch (SQLException e) {
-           System.out.println("Erro ao buscar produto. ID: " + id);
+           System.out.println("Erro ao buscar categoria. ID: " + id);
            System.out.println(e.getMessage());
            e.printStackTrace();
         }
 
-        return produto;
+        return categoria;
     }
 
     // ------------------------------------
     // CREATE
     // ------------------------------------
 
-    public void inserir(Produto produto){
+    public void inserir(Categoria categoria){
 
-        String sql = "INSERT INTO produtos(nome, preco, estoque) VALUES (?,?,?)";
+        String sql = "INSERT INTO categoria (nome) VALUES (?)";
 
         try (
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)
         ) {
-            stmt.setString(1, produto.getNome());
-            stmt.setDouble(2, produto.getPreco());
-            stmt.setInt(3, produto.getEstoque());
+            stmt.setString(1,categoria.getNome());
             
             stmt.executeUpdate();
 
             try(ResultSet rs = stmt.getGeneratedKeys()){
                 if(rs.next()){
-                    produto.setId(rs.getLong(1));
+                   categoria.setId(rs.getLong(1));
                 }
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro ao inserir produto: " + produto.getNome());
+            System.out.println("Erro ao inserir produto: " + categoria.getNome());
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -120,25 +112,23 @@ public class ProdutoDAO {
     // Update
     // ------------------------------------
 
-    public void atualizar(Produto produto){
+    public void atualizar(Categoria categoria){
 
-        String sql = "update produtos SET nome = ?, preco = ?, estoque = ? WHERE id = ?";
+        String sql = "update categoria SET nome = ? WHERE id = ?";
 
         try (
             Connection conn = ConnectionFactory.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)
         ) {
-            stmt.setString(1, produto.getNome());
-            stmt.setDouble(2, produto.getPreco());
-            stmt.setInt(3, produto.getEstoque());
-            stmt.setLong(4, produto.getId());
+            stmt.setString(1, categoria.getNome());
+            stmt.setLong(4, categoria.getId());
             
             int linhasAfetadas = stmt.executeUpdate();
-            System.out.println("Produto iD: " + produto.getId() + " Atualizado");
+            System.out.println("Categoria iD: " + categoria.getId() + " Atualizado");
             System.out.println("Linhas afetadas: " + linhasAfetadas);
 
         } catch (SQLException e) {
-            System.out.println("Erro ao atualizar o produto: " + produto.getNome());
+            System.out.println("Erro ao atualizar a categoria: " + categoria.getNome());
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -149,7 +139,7 @@ public class ProdutoDAO {
     // -----------------------------------------------------------
 
     public void deletar(Long id){
-        String sql = "DELETE FROM produtos WHERE id = ?";
+        String sql = "DELETE FROM categoria WHERE id = ?";
 
         try (
             Connection conn = ConnectionFactory.getConnection(); 
@@ -158,11 +148,11 @@ public class ProdutoDAO {
            stmt.setLong(1, id);
             
            int linhasAfetadas = stmt.executeUpdate();
-           System.out.println("Produto Excluido");
+           System.out.println("Categoria Excluida");
            System.out.println("Linhas afetadas: " + linhasAfetadas);
         
         } catch (SQLException e) {
-            System.out.println("Erro ao excluir o produto ID: " + id);
+            System.out.println("Erro ao excluir a categoria ID: " + id);
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
